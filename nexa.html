@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexa Creation – Where Creativity Meets Technology</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --gold:#D4A853;--gold-l:#F5D78E;--gold-d:#8C6020;--gold-xl:#FFF0C0;
+  --deep:#04070E;--deep2:#080C18;--deep3:#0C1020;
+  --glass:rgba(255,255,255,0.035);--glass2:rgba(255,255,255,0.06);--glass3:rgba(255,255,255,0.09);
+  --border:rgba(212,168,83,0.13);--border2:rgba(212,168,83,0.28);--border3:rgba(212,168,83,0.5);
+  --text:#EDE9E0;--muted:#706C66;--muted2:#9C9890;
+  --blue:#4F8EF7;--pink:#D44FA0;--teal:#3ECFB2;--orange:#F07038;--purple:#9B5BEF;--green:#00C853;
+  --wa:#25D366;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--text);overflow-x:hidden;cursor:none;}
+
+/* ━━━ CURSOR ━━━ */
+#cur{width:8px;height:8px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:99999;transition:width .25s,height .25s,background .25s,opacity .25s;}
+#cur-ring{width:34px;height:34px;border:1.5px solid rgba(212,168,83,.55);border-radius:50%;position:fixed;pointer-events:none;z-index:99998;transition:border-color .3s;}
+
+/* ━━━ PARTICLES ━━━ */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
+.pt{position:absolute;border-radius:50%;animation:ptRise linear infinite;}
+@keyframes ptRise{0%{transform:translateY(100vh) rotate(0);opacity:0;}8%{opacity:1;}88%{opacity:.3;}100%{transform:translateY(-30px) rotate(720deg);opacity:0;}}
+
+/* ━━━ GRAIN ━━━ */
+body::after{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9997;opacity:.6;}
+
+/* ━━━ LOADER ━━━ */
+#loader{position:fixed;inset:0;background:var(--deep);z-index:99995;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .8s ease,visibility .8s ease;}
+#loader.out{opacity:0;visibility:hidden;}
+.ld-logo{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:var(--gold);letter-spacing:.12em;animation:ldPulse 1.6s ease-in-out infinite;}
+@keyframes ldPulse{0%,100%{opacity:.3;text-shadow:none;}50%{opacity:1;text-shadow:0 0 40px rgba(212,168,83,.5);}}
+.ld-bar{width:220px;height:2px;background:rgba(212,168,83,.1);border-radius:2px;overflow:hidden;}
+.ld-fill{height:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold),var(--gold-l));width:0;animation:ldFill 2.4s cubic-bezier(.4,0,.2,1) forwards;}
+@keyframes ldFill{to{width:100%;}}
+.ld-sub{font-size:11px;letter-spacing:.28em;color:var(--muted);text-transform:uppercase;}
+
+/* ━━━ SCROLL BAR & PROGRESS ━━━ */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold-d),var(--gold-l));border-radius:2px;}
+#sprog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold-d),var(--gold),var(--gold-l),var(--pink));z-index:9999;width:0;}
+
+/* ━━━━━━━━━━ NAV ━━━━━━━━━━ */
+nav{position:fixed;top:0;left:0;right:0;z-index:8500;height:74px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;transition:background .4s,border-color .4s,backdrop-filter .4s;}
+nav.scrolled{background:rgba(4,7,14,.96);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border-bottom:1px solid var(--border);}
+.nl{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.nhex{width:46px;height:46px;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.nhex svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 0 12px rgba(212,168,83,.35));}
+.nhex span{font-family:'Orbitron',sans-serif;font-weight:900;font-size:17px;color:#000;position:relative;z-index:1;}
+.nw{display:flex;flex-direction:column;gap:2px;}
+.nw .nn{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:700;color:var(--gold);letter-spacing:.07em;line-height:1;}
+.nw .nt{font-size:9px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;}
+.nc{display:flex;gap:34px;list-style:none;}
+.nc a{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);text-decoration:none;transition:color .3s;position:relative;padding-bottom:2px;}
+.nc a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.4,0,.2,1);}
+.nc a:hover{color:var(--gold);}
+.nc a:hover::after{transform:scaleX(1);}
+.nr{display:flex;align-items:center;gap:14px;}
+.nwa{display:flex;align-items:center;gap:8px;background:var(--wa);color:#fff;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:700;text-decoration:none;transition:all .3s;box-shadow:0 4px 20px rgba(37,211,102,.28);}
+.nwa:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(37,211,102,.5);}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
+.hbg span{width:22px;height:1.5px;background:var(--gold);display:block;transition:all .35s;}
+
+/* ━━━━━━━━━━ MOB MENU ━━━━━━━━━━ */
+.mob{position:fixed;inset:0;background:rgba(4,7,14,.98);z-index:8400;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transform:translateX(100%);transition:transform .45s cubic-bezier(.77,0,.175,1);}
+.mob.open{transform:translateX(0);}
+.mob a{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:700;color:var(--text);text-decoration:none;transition:color .3s;}
+.mob a:hover{color:var(--gold);}
+
+/* ━━━━━━━━━━ HERO ━━━━━━━━━━ */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:100px 5% 70px;position:relative;overflow:hidden;}
+.hbg-wrap{position:absolute;inset:0;z-index:0;}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,168,83,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(212,168,83,.045) 1px,transparent 1px);background-size:72px 72px;animation:hgMove 28s linear infinite;}
+@keyframes hgMove{to{background-position:72px 72px;}}
+.hg1{position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(212,168,83,.11),transparent 65%);top:-250px;left:-250px;animation:orb 11s ease-in-out infinite;}
+.hg2{position:absolute;width:650px;height:650px;background:radial-gradient(circle,rgba(212,75,158,.07),transparent 65%);bottom:-150px;right:-150px;animation:orb 14s ease-in-out infinite reverse;}
+.hg3{position:absolute;width:450px;height:450px;background:radial-gradient(circle,rgba(79,142,247,.06),transparent 65%);top:40%;left:45%;animation:orb 9s ease-in-out infinite;}
+@keyframes orb{0%,100%{transform:scale(1);}50%{transform:scale(1.18) translate(16px,-16px);}}
+
+.hleft{position:relative;z-index:2;padding-right:48px;}
+.hpill{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border2);border-radius:100px;padding:9px 20px 9px 10px;margin-bottom:38px;background:rgba(212,168,83,.055);animation:fup .9s ease both;}
+.hpill-dot{width:30px;height:30px;background:linear-gradient(135deg,var(--gold),var(--gold-d));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#000;font-weight:900;animation:pDot 2s ease-in-out infinite;}
+@keyframes pDot{0%,100%{box-shadow:0 0 0 0 rgba(212,168,83,.4);}50%{box-shadow:0 0 0 8px rgba(212,168,83,.0);}}
+.hpill-t{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+.htitle{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,6.5vw,92px);font-weight:700;line-height:.98;margin-bottom:30px;animation:fup .9s .1s ease both;}
+.htitle .t1{display:block;color:var(--text);}
+.htitle .t2{display:block;color:var(--text);font-style:italic;}
+.htitle .t3{display:block;background:linear-gradient(130deg,var(--gold),var(--gold-l),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hdesc{font-size:17px;color:var(--muted2);line-height:1.85;max-width:450px;margin-bottom:46px;animation:fup .9s .2s ease both;}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap;animation:fup .9s .3s ease both;}
+.btn-g{padding:15px 38px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#000;border:none;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.07em;cursor:pointer;transition:all .35s;text-decoration:none;display:inline-flex;align-items:center;gap:9px;box-shadow:0 8px 32px rgba(212,168,83,.32);}
+.btn-g:hover{transform:translateY(-3px);box-shadow:0 18px 55px rgba(212,168,83,.58);}
+.btn-o{padding:15px 38px;background:transparent;color:var(--text);border:1px solid var(--border2);border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .35s;text-decoration:none;display:inline-flex;align-items:center;gap:9px;}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+.hstats{display:flex;gap:44px;margin-top:58px;padding-top:40px;border-top:1px solid var(--border);animation:fup .9s .4s ease both;flex-wrap:wrap;}
+.hs{display:flex;flex-direction:column;gap:5px;}
+.hs-n{font-family:'Orbitron',sans-serif;font-size:32px;font-weight:700;color:var(--gold);}
+.hs-l{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+
+/* Hero Right – Floating Cards */
+.hright{position:relative;z-index:2;height:580px;animation:fup .9s .15s ease both;}
+.hstack{position:relative;width:100%;height:100%;}
+.hcard{position:absolute;border-radius:22px;padding:26px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+.hcard.c1{width:290px;height:185px;background:linear-gradient(140deg,rgba(212,168,83,.18),rgba(212,168,83,.04));border:1px solid rgba(212,168,83,.35);top:30px;right:10px;animation:cf1 6s ease-in-out infinite;}
+.hcard.c2{width:270px;height:168px;background:linear-gradient(140deg,rgba(212,75,158,.14),rgba(79,142,247,.04));border:1px solid rgba(212,75,158,.28);top:165px;right:170px;animation:cf2 7.5s ease-in-out infinite;}
+.hcard.c3{width:310px;height:205px;background:linear-gradient(140deg,rgba(62,207,178,.12),rgba(79,142,247,.04));border:1px solid rgba(62,207,178,.22);top:310px;right:50px;animation:cf3 8.5s ease-in-out infinite;}
+.hcard.c4{width:210px;height:148px;background:linear-gradient(140deg,rgba(240,112,56,.12),rgba(212,168,83,.04));border:1px solid rgba(240,112,56,.22);top:70px;left:10px;animation:cf1 10s ease-in-out infinite reverse;}
+@keyframes cf1{0%,100%{transform:translateY(0) rotate(-1.5deg);}50%{transform:translateY(-18px) rotate(.5deg);}}
+@keyframes cf2{0%,100%{transform:translateY(-6px) rotate(2.5deg);}50%{transform:translateY(10px) rotate(.8deg);}}
+@keyframes cf3{0%,100%{transform:translateY(0) rotate(1deg);}50%{transform:translateY(-22px) rotate(-1deg);}}
+.hci{font-size:30px;margin-bottom:10px;}
+.hct{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.hcs{font-size:12px;color:var(--muted2);margin-bottom:12px;}
+.hcbadge{display:inline-block;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+
+@keyframes fup{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
+
+/* ━━━━━━━━━━ MARQUEE ━━━━━━━━━━ */
+.mq{overflow:hidden;background:linear-gradient(135deg,var(--gold-d),var(--gold),var(--gold-l));padding:15px 0;position:relative;z-index:10;}
+.mq-track{display:flex;animation:mqs 22s linear infinite;width:max-content;}
+.mq-item{padding:0 36px;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#000;white-space:nowrap;display:flex;align-items:center;gap:20px;}
+.mq-item::after{content:'◆';font-size:7px;opacity:.45;}
+@keyframes mqs{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ━━━━━━━━━━ SECTIONS ━━━━━━━━━━ */
+section{padding:110px 5%;position:relative;}
+.slbl{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;}
+.slbl::before{content:'';width:30px;height:1px;background:var(--gold);}
+h2.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4.8vw,62px);font-weight:700;line-height:1.08;margin-bottom:16px;}
+h2.stitle em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sdesc{font-size:16px;color:var(--muted2);line-height:1.85;max-width:520px;}
+.shead{margin-bottom:74px;}
+.shead.center{text-align:center;}
+.shead.center .slbl{justify-content:center;}
+.shead.center .sdesc{margin:0 auto;}
+
+/* ━━━━━━━━━━ SERVICES ━━━━━━━━━━ */
+.svc-sec{background:var(--deep2);}
+.svc-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 35% at 85% 50%,rgba(212,168,83,.04),transparent);pointer-events:none;}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:50px;}
+.tab{padding:9px 24px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted2);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .3s;}
+.tab:hover,.tab.on{background:var(--gold);color:#000;border-color:var(--gold);}
+.masonry{columns:3 310px;gap:20px;}
+.scard{break-inside:avoid;margin-bottom:20px;background:var(--glass);border:1px solid var(--border);border-radius:20px;padding:28px;transition:all .45s;position:relative;overflow:hidden;display:block;transform-style:preserve-3d;}
+.scard::before{content:'';position:absolute;inset:0;background:linear-gradient(140deg,var(--c1,rgba(212,168,83,.07)),var(--c2,transparent));opacity:0;transition:opacity .4s;border-radius:20px;}
+.scard:hover{transform:translateY(-9px);border-color:var(--border2);box-shadow:0 28px 70px rgba(0,0,0,.55);}
+.scard:hover::before{opacity:1;}
+.sctop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;}
+.scicon{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.scarrow{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;transition:all .35s;}
+.scard:hover .scarrow{background:var(--gold);border-color:var(--gold);color:#000;transform:rotate(45deg);}
+.scname{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.15;}
+.sclist{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.sclist li{font-size:13px;color:var(--muted2);display:flex;align-items:center;gap:8px;}
+.sclist li::before{content:'';width:3px;height:3px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+.scnum{position:absolute;bottom:14px;right:18px;font-family:'Orbitron',sans-serif;font-size:52px;font-weight:900;color:rgba(255,255,255,.025);line-height:1;pointer-events:none;}
+
+/* ━━━━━━━━━━ BENTO / FEATURES ━━━━━━━━━━ */
+.feat-sec{background:var(--deep);}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;}
+.bi{background:var(--glass);border:1px solid var(--border);border-radius:22px;padding:38px;position:relative;overflow:hidden;transition:all .4s;}
+.bi:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:0 22px 55px rgba(0,0,0,.45);}
+.b-a{grid-column:span 7;}
+.b-b{grid-column:span 5;}
+.b-c{grid-column:span 4;}
+.b-d{grid-column:span 4;}
+.b-e{grid-column:span 4;}
+.b-f{grid-column:span 6;}
+.b-g{grid-column:span 6;}
+.b-h{grid-column:span 12;}
+.bnum{font-family:'Orbitron',sans-serif;font-size:80px;font-weight:900;color:rgba(212,168,83,.06);position:absolute;bottom:-14px;right:18px;line-height:1;pointer-events:none;}
+.blbl{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;display:block;}
+.bhead{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,28px);font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.2;}
+.bbody{color:var(--muted2);font-size:14px;line-height:1.75;}
+/* Ring animation */
+.rings{position:relative;width:130px;height:130px;flex-shrink:0;}
+.rng{position:absolute;border-radius:50%;border:1.5px solid rgba(212,168,83,.28);animation:rEx 2.2s ease-in-out infinite;}
+.rng:nth-child(1){width:44px;height:44px;top:43px;left:43px;animation-delay:0s;}
+.rng:nth-child(2){width:88px;height:88px;top:21px;left:21px;animation-delay:.45s;}
+.rng:nth-child(3){width:130px;height:130px;top:0;left:0;animation-delay:.9s;}
+@keyframes rEx{0%{opacity:.85;transform:scale(.88);}100%{opacity:0;transform:scale(1.22);}}
+.rng-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:30px;z-index:2;}
+/* Lang badges */
+.lbadges{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px;}
+.lbadge{padding:7px 18px;border:1px solid var(--border);border-radius:100px;font-size:13px;color:var(--gold);background:rgba(212,168,83,.06);font-weight:600;}
+/* Mini stat boxes */
+.mini-stats{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
+.ms{flex:1;min-width:90px;background:rgba(212,168,83,.08);border-radius:12px;padding:16px;text-align:center;}
+.ms-n{font-family:'Orbitron',sans-serif;font-size:22px;color:var(--gold);font-weight:700;}
+.ms-l{font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px;}
+/* Tags row */
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;}
+.ctag{padding:6px 15px;background:rgba(212,168,83,.08);border:1px solid var(--border);border-radius:6px;font-size:12px;color:var(--gold);}
+/* Scroll track mini viz */
+.wa-track{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+.wa-msg{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.18);border-radius:10px 10px 2px 10px;padding:10px 14px;font-size:12px;color:var(--text);max-width:220px;align-self:flex-end;}
+.wa-msg.them{background:var(--glass2);border-color:var(--border);border-radius:10px 10px 10px 2px;align-self:flex-start;}
+
+/* ━━━━━━━━━━ WHY US ━━━━━━━━━━ */
+.why-sec{background:var(--deep2);}
+.why-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;}
+.why-hero{grid-column:1;grid-row:1/4;background:linear-gradient(155deg,rgba(212,168,83,.1),rgba(212,168,83,.02) 55%,transparent);border:1px solid var(--border2);border-radius:28px;padding:52px 46px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;}
+.why-hero::before{content:'NEXA';position:absolute;top:-30px;left:-15px;font-family:'Orbitron',sans-serif;font-size:140px;font-weight:900;color:rgba(212,168,83,.035);line-height:1;pointer-events:none;letter-spacing:.05em;}
+.why-num{font-family:'Orbitron',sans-serif;font-size:76px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:14px;}
+.why-t{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--text);margin-bottom:14px;}
+.why-b{font-size:15px;color:var(--muted2);line-height:1.75;}
+.sbars{margin-top:38px;display:flex;flex-direction:column;gap:18px;}
+.sbi{}
+.sbt{display:flex;justify-content:space-between;margin-bottom:8px;}
+.sbname{font-size:13px;color:var(--muted2);}
+.sbpct{font-size:13px;color:var(--gold);font-weight:600;}
+.sbtrack{height:3px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;}
+.sbfill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold-d),var(--gold));width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1);}
+.wsm{background:var(--glass);border:1px solid var(--border);border-radius:20px;padding:30px;transition:all .4s;position:relative;overflow:hidden;}
+.wsm:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:0 18px 55px rgba(0,0,0,.45);}
+.wsm-icon{width:50px;height:50px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;}
+.wsm-t{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.wsm-b{font-size:13px;color:var(--muted2);line-height:1.7;}
+
+/* ━━━━━━━━━━ PROCESS ━━━━━━━━━━ */
+.proc-sec{background:var(--deep);overflow:hidden;}
+.proc-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;border:1px solid rgba(212,168,83,.05);pointer-events:none;}
+.ptl{display:flex;position:relative;overflow-x:auto;padding-bottom:10px;}
+.ptl::before{content:'';position:absolute;top:56px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,83,.3),rgba(212,168,83,.3),transparent);}
+.ps{flex:1;min-width:200px;text-align:center;padding:0 18px;position:relative;}
+.pc{width:112px;height:112px;border-radius:50%;border:1px solid var(--border2);background:var(--deep);display:flex;align-items:center;justify-content:center;margin:0 auto 32px;font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;color:var(--gold);position:relative;transition:all .45s;cursor:default;}
+.pc::before{content:'';position:absolute;inset:-9px;border-radius:50%;border:1px dashed rgba(212,168,83,.18);animation:spinD 14s linear infinite;}
+@keyframes spinD{to{transform:rotate(360deg);}}
+.ps:hover .pc{background:var(--gold);color:#000;box-shadow:0 0 70px rgba(212,168,83,.55);transform:scale(1.1);}
+.pc-badge{position:absolute;bottom:-5px;right:-5px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;color:#000;font-weight:700;}
+.pt-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:10px;}
+.pt-desc{font-size:13px;color:var(--muted2);line-height:1.7;}
+
+/* ━━━━━━━━━━ PREMIUM ━━━━━━━━━━ */
+.prem-sec{background:var(--deep2);}
+.prem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.pc-card{border-radius:22px;padding:34px;border:1px solid var(--border);background:var(--glass);position:relative;overflow:hidden;transition:all .45s;}
+.pc-card:hover{transform:translateY(-7px);box-shadow:0 24px 70px rgba(0,0,0,.55);}
+.pc-card.feat{border-color:rgba(212,168,83,.42);background:linear-gradient(155deg,rgba(212,168,83,.1),rgba(212,168,83,.02));}
+.pbadge{display:inline-block;padding:5px 15px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:var(--gold);color:#000;margin-bottom:22px;}
+.picon{font-size:38px;margin-bottom:18px;}
+.ptitle{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:700;color:var(--text);margin-bottom:12px;}
+.pdesc{font-size:14px;color:var(--muted2);line-height:1.75;margin-bottom:22px;}
+.pfeats{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.pfeats li{font-size:13px;color:var(--muted2);display:flex;align-items:center;gap:8px;}
+.pfeats li i{color:var(--gold);font-size:11px;}
+
+/* ━━━━━━━━━━ GALLERY ━━━━━━━━━━ */
+.gal-sec{background:var(--deep);padding:90px 0;overflow:hidden;}
+.gal-sec .shead{padding:0 5%;margin-bottom:52px;}
+.gal-wrap{overflow:hidden;position:relative;}
+.gal-wrap::before,.gal-wrap::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none;}
+.gal-wrap::before{left:0;background:linear-gradient(90deg,var(--deep),transparent);}
+.gal-wrap::after{right:0;background:linear-gradient(-90deg,var(--deep),transparent);}
+.gal-track{display:flex;gap:16px;width:max-content;padding:14px 0;}
+.gal-track.go{animation:gals 26s linear infinite;}
+.gal-track.back{animation:gals 30s linear infinite reverse;}
+.gal-track:hover{animation-play-state:paused;}
+.gc{width:265px;height:185px;border-radius:18px;border:1px solid var(--border);background:var(--glass2);flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;transition:all .4s;cursor:pointer;position:relative;overflow:hidden;}
+.gc:hover{border-color:var(--border2);transform:scale(1.05);box-shadow:0 18px 50px rgba(0,0,0,.55);}
+.gc .gi{font-size:42px;transition:transform .4s;}
+.gc:hover .gi{transform:scale(1.22) rotate(8deg);}
+.gc .gl{font-size:13px;color:var(--muted2);font-weight:500;text-align:center;}
+.gc .gs{position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.07),transparent);opacity:0;transition:opacity .3s;}
+.gc:hover .gs{opacity:1;}
+@keyframes gals{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ━━━━━━━━━━ TESTIMONIALS ━━━━━━━━━━ */
+.testi-sec{background:var(--deep2);}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tc{background:var(--glass);border:1px solid var(--border);border-radius:22px;padding:34px;position:relative;overflow:hidden;transition:all .45s;transform-style:preserve-3d;}
+.tc:hover{border-color:var(--border2);box-shadow:0 22px 60px rgba(0,0,0,.5);}
+.tc::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:130px;color:rgba(212,168,83,.06);position:absolute;top:-24px;right:18px;line-height:1;pointer-events:none;}
+.tstars{color:var(--gold);font-size:13px;letter-spacing:3px;margin-bottom:18px;}
+.ttext{font-size:15px;color:var(--text);line-height:1.82;margin-bottom:26px;font-style:italic;}
+.tauth{display:flex;align-items:center;gap:13px;}
+.tav{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;color:#000;}
+.tname{font-size:14px;font-weight:600;color:var(--text);}
+.trole{font-size:12px;color:var(--muted);}
+
+/* ━━━━━━━━━━ CTA ━━━━━━━━━━ */
+.cta-sec{background:var(--deep);text-align:center;overflow:hidden;}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 75% 55% at 50% 50%,rgba(212,168,83,.07),transparent);pointer-events:none;}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:550px;height:550px;background:radial-gradient(circle,rgba(212,168,83,.09),transparent 68%);border-radius:50%;animation:orb 9s ease-in-out infinite;pointer-events:none;}
+.cta-in{position:relative;z-index:2;}
+.ctitle{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,6.5vw,84px);font-weight:700;line-height:1.02;margin-bottom:26px;}
+.ctitle em{font-style:italic;background:linear-gradient(130deg,var(--gold),var(--gold-l),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.chips{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:50px;}
+.chip{display:flex;align-items:center;gap:10px;background:var(--glass2);border:1px solid var(--border);border-radius:100px;padding:12px 26px;font-size:14px;color:var(--text);text-decoration:none;transition:all .35s;}
+.chip:hover{border-color:var(--border2);transform:translateY(-3px);background:rgba(212,168,83,.08);}
+.chip i{color:var(--gold);}
+
+/* ━━━━━━━━━━ FOOTER ━━━━━━━━━━ */
+footer{background:#020508;padding:95px 5% 44px;border-top:1px solid var(--border);}
+.ftop{display:grid;grid-template-columns:2.2fr 1fr 1fr 1.7fr;gap:68px;margin-bottom:76px;}
+.fbrand .fw{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.fabout{font-size:14px;color:var(--muted);line-height:1.95;margin-bottom:34px;}
+.fsocs{display:flex;gap:10px;}
+.fsoc{width:42px;height:42px;border-radius:13px;border:1px solid var(--border);background:var(--glass);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);text-decoration:none;transition:all .35s;}
+.fsoc:hover{transform:translateY(-3px);}
+.fsoc.ig:hover{border-color:#E1306C;color:#E1306C;background:rgba(225,48,108,.07);}
+.fsoc.wa:hover{border-color:var(--wa);color:var(--wa);background:rgba(37,211,102,.07);}
+.fsoc.yt:hover{border-color:#FF0000;color:#FF0000;background:rgba(255,0,0,.07);}
+.fsoc.fb:hover{border-color:#1877F2;color:#1877F2;background:rgba(24,119,242,.07);}
+.fsoc.em:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,168,83,.07);}
+.fcol h4{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--text);margin-bottom:24px;}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:13px;}
+.flinks a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .3s;display:flex;align-items:center;gap:8px;}
+.flinks a::before{content:'→';font-size:11px;opacity:.35;transition:opacity .3s;}
+.flinks a:hover{color:var(--gold);}
+.flinks a:hover::before{opacity:1;}
+.fctacts{display:flex;flex-direction:column;gap:18px;}
+.fci{display:flex;align-items:flex-start;gap:14px;}
+.fcic{width:40px;height:40px;border-radius:11px;background:rgba(212,168,83,.07);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex-shrink:0;}
+.fcii strong{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.fcii a,.fcii span{font-size:14px;color:var(--text);text-decoration:none;line-height:1.55;}
+.fcii a:hover{color:var(--gold);}
+.fbot{padding-top:38px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.fcopy{font-size:13px;color:var(--muted);}
+.fcopy em{color:var(--gold);font-style:normal;}
+.ftag{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+
+/* ━━━━━━━━━━ WA FLOAT ━━━━━━━━━━ */
+.wa-fl{position:fixed;bottom:32px;right:32px;z-index:9900;display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
+.wa-tip{background:rgba(4,7,14,.96);border:1px solid rgba(37,211,102,.28);border-radius:16px 16px 4px 16px;padding:13px 20px;font-size:13px;color:var(--text);opacity:0;transform:translateY(6px);transition:all .35s;pointer-events:none;box-shadow:0 10px 40px rgba(0,0,0,.5);}
+.wa-tip strong{color:var(--wa);display:block;font-size:12px;margin-bottom:4px;}
+.wa-fl:hover .wa-tip{opacity:1;transform:translateY(0);}
+.wa-b{width:64px;height:64px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;font-size:29px;color:#fff;text-decoration:none;box-shadow:0 8px 32px rgba(37,211,102,.42);animation:waPop 2.8s ease-in-out infinite;transition:transform .3s;}
+.wa-b:hover{transform:scale(1.13);animation:none;box-shadow:0 14px 50px rgba(37,211,102,.65);}
+@keyframes waPop{0%,100%{box-shadow:0 8px 32px rgba(37,211,102,.42);}50%{box-shadow:0 8px 52px rgba(37,211,102,.72),0 0 0 16px rgba(37,211,102,.06);}}
+
+/* ━━━━━━━━━━ REVEAL ━━━━━━━━━━ */
+.rev{opacity:0;transform:translateY(42px);transition:opacity .75s ease,transform .75s ease;}
+.rev.on{opacity:1;transform:translateY(0);}
+.revl{opacity:0;transform:translateX(-42px);transition:opacity .75s ease,transform .75s ease;}
+.revl.on{opacity:1;transform:translateX(0);}
+.revr{opacity:0;transform:translateX(42px);transition:opacity .75s ease,transform .75s ease;}
+.revr.on{opacity:1;transform:translateX(0);}
+
+/* ━━━━━━━━━━ RESPONSIVE ━━━━━━━━━━ */
+@media(max-width:1100px){.why-grid{grid-template-columns:1fr;}.why-hero{grid-row:auto;}.b-a{grid-column:span 12;}.b-b{grid-column:span 12;}}
+@media(max-width:900px){
+  .nc{display:none;}.hbg{display:flex;}
+  .hero{grid-template-columns:1fr;padding-top:110px;}
+  .hright{display:none;}
+  .tgrid{grid-template-columns:1fr;}
+  .prem-grid{grid-template-columns:1fr;}
+  .ftop{grid-template-columns:1fr;gap:44px;}
+  .masonry{columns:1;}
+  .b-c,.b-d,.b-e,.b-f,.b-g,.b-h{grid-column:span 12;}
+}
+@media(max-width:600px){
+  .htitle{font-size:50px;}.ctitle{font-size:42px;}
+  .why-grid{grid-template-columns:1fr;}.ftop{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── LOADER ── -->
+<div id="loader">
+  <div class="ld-logo">NC</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+  <div class="ld-sub">Crafting Your Experience…</div>
+</div>
+
+<!-- ── SCROLL PROGRESS ── -->
+<div id="sprog"></div>
+
+<!-- ── PARTICLES ── -->
+<div id="particles"></div>
+
+<!-- ── CURSOR ── -->
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- ── MOB MENU ── -->
+<div class="mob" id="mob">
+  <a href="#services" onclick="cMob()">Services</a>
+  <a href="#features" onclick="cMob()">Features</a>
+  <a href="#why" onclick="cMob()">Why Us</a>
+  <a href="#process" onclick="cMob()">Process</a>
+  <a href="#testimonials" onclick="cMob()">Reviews</a>
+  <a href="https://wa.me/917093528048" target="_blank" class="btn-g" style="font-size:16px;"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+</div>
+
+<!-- ════════════════════ NAV ════════════════════ -->
+<nav id="nav">
+  <a href="#" class="nl">
+    <div class="nhex">
+      <svg viewBox="0 0 44 44"><polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="url(#g1)"/><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D4A853"/><stop offset="100%" stop-color="#8C6020"/></linearGradient></defs></svg>
+      <span>N</span>
+    </div>
+    <div class="nw">
+      <span class="nn">Nexa Creation</span>
+      <span class="nt">Creativity × Technology</span>
+    </div>
+  </a>
+  <ul class="nc">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <div class="nr">
+    <a href="https://wa.me/917093528048" target="_blank" class="nwa"><i class="fab fa-whatsapp"></i> Get Started</a>
+    <div class="hbg" onclick="tMob()" id="ham"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero" id="home">
+  <div class="hbg-wrap">
+    <div class="hgrid"></div>
+    <div class="hg1"></div><div class="hg2"></div><div class="hg3"></div>
+  </div>
+
+  <div class="hleft">
+    <div class="hpill">
+      <span class="hpill-dot">✦</span>
+      <span class="hpill-t">Hyderabad's Premier Creative Studio</span>
+    </div>
+    <h1 class="htitle">
+      <span class="t1">Crafting</span>
+      <span class="t2">Moments,</span>
+      <span class="t3">Creating Magic</span>
+    </h1>
+    <p class="hdesc">From breathtaking wedding invitations to cutting-edge AI-powered digital experiences — Nexa Creation transforms your vision into unforgettable memories with the perfect blend of artistry and technology.</p>
+    <div class="hbtns">
+      <a href="https://wa.me/917093528048" target="_blank" class="btn-g"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="#services" class="btn-o">Explore Services <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="hstats">
+      <div class="hs"><span class="hs-n" data-count="5000">0</span><span class="hs-l">Happy Clients</span></div>
+      <div class="hs"><span class="hs-n" data-count="11">0</span><span class="hs-l">Categories</span></div>
+      <div class="hs"><span class="hs-n" data-count="8">0</span><span class="hs-l">Years</span></div>
+      <div class="hs"><span class="hs-n" data-count="3">0</span><span class="hs-l">Languages</span></div>
+    </div>
+  </div>
+
+  <div class="hright">
+    <div class="hstack">
+      <div class="hcard c1">
+        <div class="hci">💌</div>
+        <div class="hct">Wedding Invitations</div>
+        <div class="hcs">Digital & Printed</div>
+        <span class="hcbadge" style="background:rgba(212,168,83,.15);color:var(--gold);">Most Popular</span>
+      </div>
+      <div class="hcard c2">
+        <div class="hci">🎬</div>
+        <div class="hct">Animated Videos</div>
+        <div class="hcs">3D · Reels · Highlights</div>
+        <span class="hcbadge" style="background:rgba(212,75,158,.15);color:var(--pink);">Trending</span>
+      </div>
+      <div class="hcard c3">
+        <div class="hci">🤖</div>
+        <div class="hct">AI-Powered Generator</div>
+        <div class="hcs">Instant · Personalized · Smart</div>
+        <span class="hcbadge" style="background:rgba(62,207,178,.15);color:var(--teal);">Premium</span>
+      </div>
+      <div class="hcard c4">
+        <div class="hci">🎨</div>
+        <div class="hct">Brand Identity</div>
+        <div class="hcs">Logo · Cards · Full Kit</div>
+        <span class="hcbadge" style="background:rgba(240,112,56,.15);color:var(--orange);">New</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ MARQUEE ════════════════════ -->
+<div class="mq">
+  <div class="mq-track">
+    <span class="mq-item">Wedding Invitations</span><span class="mq-item">Animated Videos</span><span class="mq-item">Logo Design</span><span class="mq-item">Restaurant Menus</span><span class="mq-item">Event Planning</span><span class="mq-item">AI Invitations</span><span class="mq-item">Photography</span><span class="mq-item">Corporate Branding</span><span class="mq-item">WhatsApp Cards</span><span class="mq-item">QR Codes</span><span class="mq-item">Drone Shoots</span><span class="mq-item">3D Videos</span>
+    <span class="mq-item">Wedding Invitations</span><span class="mq-item">Animated Videos</span><span class="mq-item">Logo Design</span><span class="mq-item">Restaurant Menus</span><span class="mq-item">Event Planning</span><span class="mq-item">AI Invitations</span><span class="mq-item">Photography</span><span class="mq-item">Corporate Branding</span><span class="mq-item">WhatsApp Cards</span><span class="mq-item">QR Codes</span><span class="mq-item">Drone Shoots</span><span class="mq-item">3D Videos</span>
+  </div>
+</div>
+
+<!-- ════════════════════ SERVICES ════════════════════ -->
+<section class="svc-sec" id="services">
+  <div class="shead rev">
+    <div class="slbl">Our Services</div>
+    <h2 class="stitle">Everything Creative,<br><em>All Under One Roof</em></h2>
+    <p class="sdesc">11 premium service categories crafted to make every occasion unforgettable — from intimate moments to grand corporate events.</p>
+  </div>
+  <div class="tabs rev">
+    <button class="tab on" onclick="filt('all',this)">All Services</button>
+    <button class="tab" onclick="filt('inv',this)">Invitations</button>
+    <button class="tab" onclick="filt('des',this)">Design</button>
+    <button class="tab" onclick="filt('dig',this)">Digital</button>
+    <button class="tab" onclick="filt('evt',this)">Events</button>
+    <button class="tab" onclick="filt('cor',this)">Corporate</button>
+  </div>
+  <div class="masonry" id="svcg">
+
+    <div class="scard rev" data-cat="inv" style="--c1:rgba(212,168,83,.1);--c2:rgba(212,168,83,.02);">
+      <div class="sctop"><div class="scicon" style="background:rgba(212,168,83,.12);color:var(--gold);">💌</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Invitations & Greetings</div>
+      <ul class="sclist"><li>Wedding Invitations (Digital & Printed)</li><li>Birthday & Personalized Wishes</li><li>Engagement, Anniversary & Reception</li><li>Baby Shower & Naming Ceremony</li><li>Housewarming Invitations</li><li>Farewell, Freshers & Graduation</li><li>Retirement Party Invitations</li><li>Festival Greetings & E-Cards</li><li>Save-the-Date & RSVP Management</li></ul>
+      <div class="scnum">01</div>
+    </div>
+
+    <div class="scard rev" data-cat="dig" style="--c1:rgba(212,75,158,.1);--c2:rgba(79,142,247,.02);">
+      <div class="sctop"><div class="scicon" style="background:rgba(212,75,158,.12);color:var(--pink);">🎬</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Video & Animation</div>
+      <ul class="sclist"><li>Animated Video Invitations</li><li>3D Invitation Videos</li><li>Couple Story Videos</li><li>Birthday Memory Videos</li><li>LED Screen Event Videos</li><li>Event Highlights & Reels Creation</li></ul>
+      <div class="scnum">02</div>
+    </div>
+
+    <div class="scard rev" data-cat="dig" style="--c1:rgba(79,142,247,.1);--c2:rgba(79,142,247,.02);">
+      <div class="sctop"><div class="scicon" style="background:rgba(79,142,247,.12);color:var(--blue);">📱</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Digital & Social Media</div>
+      <ul class="sclist"><li>WhatsApp Invitation Cards</li><li>Instagram / Facebook Event Posts</li><li>Social Media Marketing</li><li>Festival Promotion Posts</li><li>Business Advertisements</li><li>YouTube Thumbnail Design</li></ul>
+      <div class="scnum">03</div>
+    </div>
+
+    <div class="scard rev" data-cat="des" style="--c1:rgba(62,207,178,.1);--c2:transparent;">
+      <div class="sctop"><div class="scicon" style="background:rgba(62,207,178,.12);color:var(--teal);">🎨</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Design & Branding</div>
+      <ul class="sclist"><li>Logo Design</li><li>Business Card Design</li><li>Brochure & Flyer Design</li><li>Banner & Flex Design</li><li>Packaging Design</li><li>Brand Identity Kit</li></ul>
+      <div class="scnum">04</div>
+    </div>
+
+    <div class="scard rev" data-cat="des" style="--c1:rgba(240,112,56,.1);--c2:transparent;">
+      <div class="sctop"><div class="scicon" style="background:rgba(240,112,56,.12);color:var(--orange);">🍽️</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Restaurant & Hotel</div>
+      <ul class="sclist"><li>Restaurant Menu Design</li><li>Hotel Menu Design</li><li>QR Code Menus</li><li>Digital Ordering Menus</li><li>Table Tent Cards</li><li>Food Photography</li></ul>
+      <div class="scnum">05</div>
+    </div>
+
+    <div class="scard rev" data-cat="dig" style="--c1:rgba(155,91,239,.1);--c2:transparent;">
+      <div class="sctop"><div class="scicon" style="background:rgba(155,91,239,.12);color:var(--purple);">🌐</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Website & Technology</div>
+      <ul class="sclist"><li>Business Websites</li><li>Event Landing Pages</li><li>Online RSVP Websites</li><li>QR Code Generation</li><li>Digital Business Cards</li><li>Online Portfolio Websites</li></ul>
+      <div class="scnum">06</div>
+    </div>
+
+    <div class="scard rev" data-cat="evt" style="--c1:rgba(255,59,130,.1);--c2:transparent;">
+      <div class="sctop"><div class="scicon" style="background:rgba(255,59,130,.12);color:#FF3B82;">🎁</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Event & Surprise Planning</div>
+      <ul class="sclist"><li>Surprise Birthday Planning</li><li>Proposal Arrangements</li><li>Anniversary Surprises</li><li>Gift Selection & Delivery</li><li>Decoration Planning</li><li>Customized Return Gifts</li></ul>
+      <div class="scnum">07</div>
+    </div>
+
+    <div class="scard rev" data-cat="evt" style="--c1:rgba(0,200,83,.1);--c2:transparent;">
+      <div class="sctop"><div class="scicon" style="background:rgba(0,200,83,.12);color:var(--green);">📸</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Media Services</div>
+      <ul class="sclist"><li>Photography Booking</li><li>Videography Booking</li><li>Drone Photography</li><li>Live Streaming of Events</li><li>Photo Editing & Retouching</li><li>Album Design</li></ul>
+      <div class="scnum">08</div>
+    </div>
+
+    <div class="scard rev" data-cat="evt" style="--c1:rgba(255,196,0,.1);--c2:transparent;">
+      <div class="sctop"><div class="scicon" style="background:rgba(255,196,0,.12);color:#FFC400;">🎤</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Vendor Services</div>
+      <ul class="sclist"><li>DJ Booking</li><li>Catering Services</li><li>Decoration Services</li><li>Makeup Artist Booking</li><li>Mehendi Artist Booking</li><li>Sound & Lighting Arrangements</li></ul>
+      <div class="scnum">09</div>
+    </div>
+
+    <div class="scard rev" data-cat="cor" style="--c1:rgba(79,142,247,.08);--c2:transparent;">
+      <div class="sctop"><div class="scicon" style="background:rgba(79,142,247,.12);color:var(--blue);">💼</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Corporate Services</div>
+      <ul class="sclist"><li>Corporate Event Invitations</li><li>Conference & Seminar Designs</li><li>Employee Appreciation Certificates</li><li>Company Event Branding</li><li>Digital Certificates</li><li>Training Event Materials</li></ul>
+      <div class="scnum">10</div>
+    </div>
+
+    <div class="scard rev" data-cat="dig" style="--c1:rgba(212,168,83,.16);--c2:rgba(212,75,158,.04);border-color:rgba(212,168,83,.32);">
+      <div class="sctop"><div class="scicon" style="background:rgba(212,168,83,.22);color:var(--gold-l);">🤖</div><div class="scarrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="scname">Premium AI Features</div>
+      <ul class="sclist"><li>AI-Powered Invitation Generator</li><li>Multi-Language (Telugu, English, Hindi)</li><li>Voice Invitation Messages</li><li>Personalized QR Invitations</li><li>Event Countdown Pages</li><li>Guest Management Dashboard</li><li>Online Ticket Booking</li><li>Live Updates via WhatsApp</li></ul>
+      <div class="scnum">11</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════ BENTO FEATURES ════════════════════ -->
+<section class="feat-sec" id="features">
+  <div class="shead rev">
+    <div class="slbl">Why Nexa Creation</div>
+    <h2 class="stitle">Built for the<br><em>Modern Creator</em></h2>
+    <p class="sdesc">Cutting-edge technology meets timeless creativity — delivering experiences that leave lasting impressions.</p>
+  </div>
+  <div class="bento">
+
+    <div class="bi b-a rev" style="display:flex;align-items:center;gap:52px;">
+      <div style="flex:1;">
+        <span class="blbl">✦ AI Technology</span>
+        <div class="bhead">AI-Powered Invitation Generator for Every Occasion</div>
+        <div class="bbody">Our intelligent engine crafts personalized, beautiful invitations in seconds — tailored to your style, language, and event type. Simply describe your vision, and watch the magic happen.</div>
+        <div class="tag-row" style="margin-top:24px;">
+          <span class="ctag">Telugu</span><span class="ctag">English</span><span class="ctag">हिंदी</span><span class="ctag">100+ Styles</span><span class="ctag">Instant</span>
+        </div>
+      </div>
+      <div class="rings" style="flex-shrink:0;">
+        <div class="rng"></div><div class="rng"></div><div class="rng"></div>
+        <i class="fas fa-robot rng-icon"></i>
+      </div>
+      <div class="bnum">01</div>
+    </div>
+
+    <div class="bi b-b rev" style="text-align:center;">
+      <span class="blbl">✦ Languages</span>
+      <div class="bhead" style="font-size:22px;">Multi-Language Support</div>
+      <div class="bbody">Reach every guest in the language closest to their heart.</div>
+      <div class="lbadges" style="justify-content:center;margin-top:22px;">
+        <span class="lbadge">తెలుగు</span>
+        <span class="lbadge">English</span>
+        <span class="lbadge">हिंदी</span>
+      </div>
+      <div class="bnum">02</div>
+    </div>
+
+    <div class="bi b-c rev">
+      <span class="blbl">✦ Speed</span>
+      <div class="bhead">Delivered in 24 Hours</div>
+      <div class="bbody">Urgent? No problem. Most designs delivered within 24 hours without compromising quality.</div>
+      <div class="mini-stats">
+        <div class="ms"><div class="ms-n">24h</div><div class="ms-l">Turnaround</div></div>
+        <div class="ms"><div class="ms-n">∞</div><div class="ms-l">Revisions</div></div>
+        <div class="ms"><div class="ms-n">4K</div><div class="ms-l">Quality</div></div>
+      </div>
+      <div class="bnum">03</div>
+    </div>
+
+    <div class="bi b-d rev">
+      <span class="blbl">✦ Guest Mgmt</span>
+      <div class="bhead">Smart RSVP Dashboard</div>
+      <div class="bbody">Track guests, manage RSVPs, send automated WhatsApp reminders — all from one beautiful dashboard.</div>
+      <div class="bnum">04</div>
+    </div>
+
+    <div class="bi b-e rev">
+      <span class="blbl">✦ QR Tech</span>
+      <div class="bhead">Personalized QR Invitations</div>
+      <div class="bbody">Each guest receives a unique QR code unlocking their personalized event experience — venue, schedule, memories.</div>
+      <div class="bnum">05</div>
+    </div>
+
+    <div class="bi b-f rev">
+      <span class="blbl">✦ Live Updates</span>
+      <div class="bhead">Real-Time WhatsApp Updates</div>
+      <div class="bbody">Keep guests informed instantly with automated, branded WhatsApp messages — schedule changes, directions, countdown reminders, and event highlights.</div>
+      <div class="wa-track" style="margin-top:20px;">
+        <div class="wa-msg them">✅ You're confirmed for the wedding!</div>
+        <div class="wa-msg">📍 Venue: Grand Palace, Hyd. Starts 7PM</div>
+        <div class="wa-msg them">🕐 Event starts in 1 hour. Don't be late!</div>
+      </div>
+      <div class="bnum">06</div>
+    </div>
+
+    <div class="bi b-g rev" style="background:linear-gradient(140deg,rgba(212,168,83,.12),rgba(212,75,158,.06));border-color:rgba(212,168,83,.32);">
+      <span class="blbl">✦ Premium Quality</span>
+      <div class="bhead">Every Pixel, Perfected</div>
+      <div class="bbody">Our designers obsess over every detail — typography, color harmony, animation timing — because your moments deserve nothing less than perfection. From print-ready files to pixel-perfect digital assets, exceptional quality every time.</div>
+      <div class="tag-row">
+        <span class="ctag">Print-Ready</span><span class="ctag">4K Quality</span><span class="ctag">All Formats</span><span class="ctag">WhatsApp-Ready</span><span class="ctag">Unlimited Revisions</span>
+      </div>
+      <div class="bnum">07</div>
+    </div>
+
+    <div class="bi b-h rev" style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;background:linear-gradient(135deg,rgba(79,142,247,.07),rgba(62,207,178,.05));border-color:rgba(79,142,247,.22);">
+      <div>
+        <span class="blbl">✦ Multi-Format Delivery</span>
+        <div class="bhead">Every Format, Every Platform</div>
+        <div class="bbody" style="max-width:480px;">We deliver your final creation in every format you need — PDF, PNG, MP4, GIF, WhatsApp-optimized, print-ready — so you can share seamlessly across every platform and channel.</div>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;flex-shrink:0;">
+        <div style="text-align:center;"><div style="width:60px;height:60px;background:rgba(212,168,83,.1);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 8px;">📄</div><div style="font-size:11px;color:var(--muted);">PDF</div></div>
+        <div style="text-align:center;"><div style="width:60px;height:60px;background:rgba(79,142,247,.1);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 8px;">🖼️</div><div style="font-size:11px;color:var(--muted);">PNG</div></div>
+        <div style="text-align:center;"><div style="width:60px;height:60px;background:rgba(212,75,158,.1);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 8px;">🎬</div><div style="font-size:11px;color:var(--muted);">MP4</div></div>
+        <div style="text-align:center;"><div style="width:60px;height:60px;background:rgba(37,211,102,.1);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 8px;">💬</div><div style="font-size:11px;color:var(--muted);">WA</div></div>
+        <div style="text-align:center;"><div style="width:60px;height:60px;background:rgba(62,207,178,.1);border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 8px;">🖨️</div><div style="font-size:11px;color:var(--muted);">Print</div></div>
+      </div>
+      <div class="bnum">08</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════ WHY US ════════════════════ -->
+<section class="why-sec" id="why">
+  <div class="shead rev">
+    <div class="slbl">Why Choose Us</div>
+    <h2 class="stitle">The Studio Built for<br><em>Extraordinary</em> Moments</h2>
+    <p class="sdesc">We don't just design — we craft experiences that resonate, inspire, and endure through generations.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-hero revl">
+      <div class="why-num">5K+</div>
+      <div class="why-t">Happy Clients Across Telangana & Beyond</div>
+      <div class="why-b">From intimate family celebrations to large-scale corporate events, thousands of clients trust Nexa Creation with their most important moments. Our track record speaks through every smile, every "wow," and every repeat customer.</div>
+      <div class="sbars">
+        <div class="sbi"><div class="sbt"><span class="sbname">Client Satisfaction</span><span class="sbpct">98%</span></div><div class="sbtrack"><div class="sbfill" data-w="98"></div></div></div>
+        <div class="sbi"><div class="sbt"><span class="sbname">On-Time Delivery</span><span class="sbpct">96%</span></div><div class="sbtrack"><div class="sbfill" data-w="96"></div></div></div>
+        <div class="sbi"><div class="sbt"><span class="sbname">Design Quality Score</span><span class="sbpct">99%</span></div><div class="sbtrack"><div class="sbfill" data-w="99"></div></div></div>
+        <div class="sbi"><div class="sbt"><span class="sbname">Repeat Customers</span><span class="sbpct">85%</span></div><div class="sbtrack"><div class="sbfill" data-w="85"></div></div></div>
+      </div>
+    </div>
+
+    <div class="wsm revr"><div class="wsm-icon" style="background:rgba(212,168,83,.12);color:var(--gold);">⚡</div><div class="wsm-t">24-Hour Turnaround</div><div class="wsm-b">Urgent invite? Most designs delivered within 24 hours without ever compromising on quality — your deadline is our priority.</div></div>
+    <div class="wsm revr" style="transition-delay:.1s;"><div class="wsm-icon" style="background:rgba(62,207,178,.12);color:var(--teal);">🌐</div><div class="wsm-t">3-Language Support</div><div class="wsm-b">Craft beautiful invitations in Telugu, English, and Hindi — reaching every guest in the language closest to their heart.</div></div>
+    <div class="wsm revr" style="transition-delay:.2s;"><div class="wsm-icon" style="background:rgba(79,142,247,.12);color:var(--blue);">🔁</div><div class="wsm-t">Unlimited Revisions</div><div class="wsm-b">We iterate until you're 100% in love with the result. No hidden fees — your satisfaction is the only finish line we care about.</div></div>
+    <div class="wsm revr" style="transition-delay:.3s;"><div class="wsm-icon" style="background:rgba(212,75,158,.12);color:var(--pink);">🤖</div><div class="wsm-t">AI-Powered Creation</div><div class="wsm-b">Our proprietary AI engine generates stunning personalized designs in seconds — more options, faster, with a human touch at every step.</div></div>
+  </div>
+</section>
+
+<!-- ════════════════════ PROCESS ════════════════════ -->
+<section class="proc-sec" id="process">
+  <div class="shead center rev">
+    <div class="slbl">How It Works</div>
+    <h2 class="stitle">Four Steps to<br><em>Pure Magic</em></h2>
+    <p class="sdesc">Your perfect creation is just four effortless steps away.</p>
+  </div>
+  <div class="ptl rev">
+    <div class="ps">
+      <div class="pc">01<div class="pc-badge" style="background:var(--gold);">💬</div></div>
+      <div class="pt-title">Connect With Us</div>
+      <div class="pt-desc">Reach out via WhatsApp, call, or website. Tell us your vision, event type, and timeline.</div>
+    </div>
+    <div class="ps">
+      <div class="pc">02<div class="pc-badge" style="background:var(--pink);">📝</div></div>
+      <div class="pt-title">Share Your Vision</div>
+      <div class="pt-desc">Provide event details, preferences, photos, language, and any specific requests or inspirations.</div>
+    </div>
+    <div class="ps">
+      <div class="pc">03<div class="pc-badge" style="background:var(--teal);">🎨</div></div>
+      <div class="pt-title">We Create Magic</div>
+      <div class="pt-desc">Our designers craft your personalized masterpiece with unlimited revisions until absolutely perfect.</div>
+    </div>
+    <div class="ps">
+      <div class="pc">04<div class="pc-badge" style="background:var(--blue);">🚀</div></div>
+      <div class="pt-title">Receive & Celebrate</div>
+      <div class="pt-desc">Get your final files in all formats — print-ready, WhatsApp-ready, and ready to wow every single guest.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ PREMIUM ════════════════════ -->
+<section class="prem-sec" id="premium">
+  <div class="shead rev">
+    <div class="slbl">Premium Features</div>
+    <h2 class="stitle">Powered by <em>Intelligence,</em><br>Crafted with Heart</h2>
+    <p class="sdesc">Our AI-driven premium features bring an entirely new dimension to event experiences — smarter, faster, more personal.</p>
+  </div>
+  <div class="prem-grid">
+    <div class="pc-card rev" style="--c1:rgba(212,168,83,.06);">
+      <div class="pbadge">AI Powered</div>
+      <div class="picon">🤖</div>
+      <div class="ptitle">AI Invitation Generator</div>
+      <div class="pdesc">Describe your event and our AI instantly creates beautiful, personalized invitation designs — no templates, pure creativity at machine speed.</div>
+      <ul class="pfeats"><li><i class="fas fa-check-circle"></i>Instant generation in seconds</li><li><i class="fas fa-check-circle"></i>100+ unique creative styles</li><li><i class="fas fa-check-circle"></i>3 language options</li><li><i class="fas fa-check-circle"></i>Fully customizable output</li></ul>
+    </div>
+    <div class="pc-card feat rev" style="transition-delay:.1s;">
+      <div class="pbadge">Most Popular</div>
+      <div class="picon">📲</div>
+      <div class="ptitle">WhatsApp Live Updates</div>
+      <div class="pdesc">Keep every guest informed with automated, beautifully branded WhatsApp messages — from countdown reminders to real-time event updates.</div>
+      <ul class="pfeats"><li><i class="fas fa-check-circle"></i>Automated scheduling</li><li><i class="fas fa-check-circle"></i>Branded message templates</li><li><i class="fas fa-check-circle"></i>Guest segmentation</li><li><i class="fas fa-check-circle"></i>Delivery tracking dashboard</li></ul>
+    </div>
+    <div class="pc-card rev" style="transition-delay:.2s;--c1:rgba(62,207,178,.06);">
+      <div class="pbadge">Smart Tech</div>
+      <div class="picon">🔲</div>
+      <div class="ptitle">Personalized QR System</div>
+      <div class="pdesc">Each guest gets a unique QR code unlocking their personal event experience — directions, schedule, digital menu, and lasting memories.</div>
+      <ul class="pfeats"><li><i class="fas fa-check-circle"></i>Unique per-guest QR codes</li><li><i class="fas fa-check-circle"></i>Live event countdown page</li><li><i class="fas fa-check-circle"></i>Guest management dashboard</li><li><i class="fas fa-check-circle"></i>Online ticket booking</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ GALLERY ════════════════════ -->
+<section class="gal-sec" id="gallery">
+  <div class="shead rev">
+    <div class="slbl">What We Create</div>
+    <h2 class="stitle">Every Occasion,<br><em>Elevated</em></h2>
+  </div>
+  <div class="gal-wrap">
+    <div class="gal-track go">
+      <div class="gc" style="background:linear-gradient(135deg,rgba(212,168,83,.14),rgba(212,168,83,.03));border-color:rgba(212,168,83,.28);"><div class="gs"></div><div class="gi">💍</div><div class="gl">Wedding Invites</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(212,75,158,.1),transparent);border-color:rgba(212,75,158,.22);"><div class="gs"></div><div class="gi">🎂</div><div class="gl">Birthday Events</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(79,142,247,.1),transparent);border-color:rgba(79,142,247,.22);"><div class="gs"></div><div class="gi">🏢</div><div class="gl">Corporate Events</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(62,207,178,.1),transparent);border-color:rgba(62,207,178,.22);"><div class="gs"></div><div class="gi">🍽️</div><div class="gl">Restaurant Menus</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(240,112,56,.1),transparent);border-color:rgba(240,112,56,.22);"><div class="gs"></div><div class="gi">📸</div><div class="gl">Photo Albums</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(155,91,239,.1),transparent);border-color:rgba(155,91,239,.22);"><div class="gs"></div><div class="gi">🌐</div><div class="gl">Event Websites</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(255,196,0,.1),transparent);border-color:rgba(255,196,0,.22);"><div class="gs"></div><div class="gi">🎤</div><div class="gl">DJ & Entertainment</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(0,200,83,.1),transparent);border-color:rgba(0,200,83,.22);"><div class="gs"></div><div class="gi">🎬</div><div class="gl">Video Reels</div></div>
+      <!-- Duplicates for seamless loop -->
+      <div class="gc" style="background:linear-gradient(135deg,rgba(212,168,83,.14),rgba(212,168,83,.03));border-color:rgba(212,168,83,.28);"><div class="gs"></div><div class="gi">💍</div><div class="gl">Wedding Invites</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(212,75,158,.1),transparent);border-color:rgba(212,75,158,.22);"><div class="gs"></div><div class="gi">🎂</div><div class="gl">Birthday Events</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(79,142,247,.1),transparent);border-color:rgba(79,142,247,.22);"><div class="gs"></div><div class="gi">🏢</div><div class="gl">Corporate Events</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(62,207,178,.1),transparent);border-color:rgba(62,207,178,.22);"><div class="gs"></div><div class="gi">🍽️</div><div class="gl">Restaurant Menus</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(240,112,56,.1),transparent);border-color:rgba(240,112,56,.22);"><div class="gs"></div><div class="gi">📸</div><div class="gl">Photo Albums</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(155,91,239,.1),transparent);border-color:rgba(155,91,239,.22);"><div class="gs"></div><div class="gi">🌐</div><div class="gl">Event Websites</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(255,196,0,.1),transparent);border-color:rgba(255,196,0,.22);"><div class="gs"></div><div class="gi">🎤</div><div class="gl">DJ & Entertainment</div></div>
+      <div class="gc" style="background:linear-gradient(135deg,rgba(0,200,83,.1),transparent);border-color:rgba(0,200,83,.22);"><div class="gs"></div><div class="gi">🎬</div><div class="gl">Video Reels</div></div>
+    </div>
+  </div>
+  <div class="gal-wrap" style="margin-top:16px;">
+    <div class="gal-track back">
+      <div class="gc" style="border-color:rgba(212,75,158,.2);background:linear-gradient(135deg,rgba(212,75,158,.08),transparent)"><div class="gs"></div><div class="gi">💄</div><div class="gl">Makeup Artist</div></div>
+      <div class="gc" style="border-color:rgba(212,168,83,.25);background:linear-gradient(135deg,rgba(212,168,83,.1),transparent)"><div class="gs"></div><div class="gi">🎊</div><div class="gl">Anniversary Surprises</div></div>
+      <div class="gc" style="border-color:rgba(62,207,178,.2);background:linear-gradient(135deg,rgba(62,207,178,.08),transparent)"><div class="gs"></div><div class="gi">🎓</div><div class="gl">Graduation Events</div></div>
+      <div class="gc" style="border-color:rgba(240,112,56,.2);background:linear-gradient(135deg,rgba(240,112,56,.08),transparent)"><div class="gs"></div><div class="gi">🏠</div><div class="gl">Housewarming</div></div>
+      <div class="gc" style="border-color:rgba(155,91,239,.2);background:linear-gradient(135deg,rgba(155,91,239,.08),transparent)"><div class="gs"></div><div class="gi">🎯</div><div class="gl">Brand Identity</div></div>
+      <div class="gc" style="border-color:rgba(79,142,247,.2);background:linear-gradient(135deg,rgba(79,142,247,.08),transparent)"><div class="gs"></div><div class="gi">🚁</div><div class="gl">Drone Photography</div></div>
+      <div class="gc" style="border-color:rgba(255,196,0,.2);background:linear-gradient(135deg,rgba(255,196,0,.08),transparent)"><div class="gs"></div><div class="gi">🎪</div><div class="gl">Festival Greetings</div></div>
+      <div class="gc" style="border-color:rgba(0,200,83,.2);background:linear-gradient(135deg,rgba(0,200,83,.08),transparent)"><div class="gs"></div><div class="gi">📋</div><div class="gl">QR Code Menus</div></div>
+      <!-- Duplicates -->
+      <div class="gc" style="border-color:rgba(212,75,158,.2);background:linear-gradient(135deg,rgba(212,75,158,.08),transparent)"><div class="gs"></div><div class="gi">💄</div><div class="gl">Makeup Artist</div></div>
+      <div class="gc" style="border-color:rgba(212,168,83,.25);background:linear-gradient(135deg,rgba(212,168,83,.1),transparent)"><div class="gs"></div><div class="gi">🎊</div><div class="gl">Anniversary Surprises</div></div>
+      <div class="gc" style="border-color:rgba(62,207,178,.2);background:linear-gradient(135deg,rgba(62,207,178,.08),transparent)"><div class="gs"></div><div class="gi">🎓</div><div class="gl">Graduation Events</div></div>
+      <div class="gc" style="border-color:rgba(240,112,56,.2);background:linear-gradient(135deg,rgba(240,112,56,.08),transparent)"><div class="gs"></div><div class="gi">🏠</div><div class="gl">Housewarming</div></div>
+      <div class="gc" style="border-color:rgba(155,91,239,.2);background:linear-gradient(135deg,rgba(155,91,239,.08),transparent)"><div class="gs"></div><div class="gi">🎯</div><div class="gl">Brand Identity</div></div>
+      <div class="gc" style="border-color:rgba(79,142,247,.2);background:linear-gradient(135deg,rgba(79,142,247,.08),transparent)"><div class="gs"></div><div class="gi">🚁</div><div class="gl">Drone Photography</div></div>
+      <div class="gc" style="border-color:rgba(255,196,0,.2);background:linear-gradient(135deg,rgba(255,196,0,.08),transparent)"><div class="gs"></div><div class="gi">🎪</div><div class="gl">Festival Greetings</div></div>
+      <div class="gc" style="border-color:rgba(0,200,83,.2);background:linear-gradient(135deg,rgba(0,200,83,.08),transparent)"><div class="gs"></div><div class="gi">📋</div><div class="gl">QR Code Menus</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ TESTIMONIALS ════════════════════ -->
+<section class="testi-sec" id="testimonials">
+  <div class="shead center rev">
+    <div class="slbl">Client Stories</div>
+    <h2 class="stitle">Moments They'll<br><em>Always Remember</em></h2>
+    <p class="sdesc">Real words from real clients who trusted us with their most precious occasions.</p>
+  </div>
+  <div class="tgrid">
+    <div class="tc rev"><div class="tstars">★★★★★</div><p class="ttext">"The animated wedding invitation was absolutely breathtaking! Every single guest called us asking how we made it. Nexa Creation truly understood our vision and delivered pure magic."</p><div class="tauth"><div class="tav" style="background:linear-gradient(135deg,var(--gold),var(--pink));">P</div><div><div class="tname">Priya Sharma</div><div class="trole">Wedding Client · Hyderabad</div></div></div></div>
+    <div class="tc rev" style="transition-delay:.08s;"><div class="tstars">★★★★★</div><p class="ttext">"The restaurant menu redesign transformed our dining experience. QR code menus are sleek, food photography stunning. Our customers literally compliment the menu daily!"</p><div class="tauth"><div class="tav" style="background:linear-gradient(135deg,var(--teal),var(--blue));">R</div><div><div class="tname">Ravi Kumar</div><div class="trole">Restaurant Owner · Hyderabad</div></div></div></div>
+    <div class="tc rev" style="transition-delay:.16s;"><div class="tstars">★★★★★</div><p class="ttext">"Complete branding done — logo, business cards, website, social media templates. Professional, fast, incredibly talented. Best investment I made for my business this year."</p><div class="tauth"><div class="tav" style="background:linear-gradient(135deg,var(--blue),var(--pink));">A</div><div><div class="tname">Aarav Mehta</div><div class="trole">Business Owner · Secunderabad</div></div></div></div>
+    <div class="tc rev" style="transition-delay:.24s;"><div class="tstars">★★★★★</div><p class="ttext">"Telugu invitation with English & Hindi support was something I couldn't find anywhere! The voice invitation feature was a massive hit. All relatives absolutely loved it."</p><div class="tauth"><div class="tav" style="background:linear-gradient(135deg,var(--gold),var(--orange));">L</div><div><div class="tname">Lakshmi Devi</div><div class="trole">Wedding Client · Vizag</div></div></div></div>
+    <div class="tc rev" style="transition-delay:.32s;"><div class="tstars">★★★★★</div><p class="ttext">"Birthday surprise planning was executed flawlessly. Decoration, personalized video, everything perfect. My wife was in tears of joy. Thank you Nexa Creation!"</p><div class="tauth"><div class="tav" style="background:linear-gradient(135deg,var(--pink),var(--gold));">S</div><div><div class="tname">Sanjay Reddy</div><div class="trole">Event Client · Hyderabad</div></div></div></div>
+    <div class="tc rev" style="transition-delay:.4s;"><div class="tstars">★★★★★</div><p class="ttext">"Corporate event branding for our annual conference done to absolute perfection. On-time, professional, outstanding quality. Our entire team and clients were truly wowed."</p><div class="tauth"><div class="tav" style="background:linear-gradient(135deg,var(--teal),var(--gold));">V</div><div><div class="tname">Vikram Nair</div><div class="trole">HR Manager · Tech Company</div></div></div></div>
+  </div>
+</section>
+
+<!-- ════════════════════ CTA ════════════════════ -->
+<section class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="cta-in rev">
+    <div class="slbl" style="justify-content:center;margin-bottom:24px;">Ready to Begin?</div>
+    <h2 class="ctitle">Let's Create Something<br><em>Extraordinary Together</em></h2>
+    <p class="sdesc" style="margin:0 auto 50px;text-align:center;">Your dream event deserves the perfect creative touch. Connect with us right now and let our team bring your vision to life.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://wa.me/917093528048" target="_blank" class="btn-g" style="font-size:16px;padding:18px 50px;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="mailto:nexacreation@gmail.com" class="btn-o" style="font-size:16px;padding:18px 50px;"><i class="fas fa-envelope"></i> Send an Email</a>
+    </div>
+    <div class="chips">
+      <a href="tel:+917093528048" class="chip"><i class="fas fa-phone"></i> +91 70935 28048</a>
+      <a href="https://instagram.com/nexacreation" target="_blank" class="chip"><i class="fab fa-instagram"></i> @nexacreation</a>
+      <a href="mailto:nexacreation@gmail.com" class="chip"><i class="fas fa-envelope"></i> nexacreation@gmail.com</a>
+      <span class="chip"><i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana</span>
+      <span class="chip"><i class="fas fa-clock"></i> Mon–Sat 9AM–8PM</span>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+  <div class="ftop">
+    <div class="fbrand">
+      <div class="fw">
+        <div class="nhex" style="width:52px;height:52px;">
+          <svg viewBox="0 0 44 44"><polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="url(#g2)"/><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D4A853"/><stop offset="100%" stop-color="#8C6020"/></linearGradient></defs></svg>
+          <span style="font-family:'Orbitron',sans-serif;font-size:19px;font-weight:900;color:#000;position:relative;z-index:1;">N</span>
+        </div>
+        <div class="nw">
+          <span class="nn" style="font-size:26px;">Nexa Creation</span>
+          <span class="nt">Creativity × Technology</span>
+        </div>
+      </div>
+      <p class="fabout">Hyderabad's premier creative studio specializing in digital invitations, branding, event planning, and technology-driven experiences. We craft moments that last a lifetime — from intimate celebrations to grand corporate events across Telangana and beyond.</p>
+      <div class="fsocs">
+        <a href="https://instagram.com/nexacreation" target="_blank" class="fsoc ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/917093528048" target="_blank" class="fsoc wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:nexacreation@gmail.com" class="fsoc em" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://youtube.com/@nexacreation" target="_blank" class="fsoc yt" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://facebook.com/nexacreation" target="_blank" class="fsoc fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>Services</h4>
+      <ul class="flinks">
+        <li><a href="#services">Invitations & Greetings</a></li>
+        <li><a href="#services">Video & Animation</a></li>
+        <li><a href="#services">Design & Branding</a></li>
+        <li><a href="#services">Restaurant Services</a></li>
+        <li><a href="#services">Website & Technology</a></li>
+        <li><a href="#services">Event Planning</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>More Services</h4>
+      <ul class="flinks">
+        <li><a href="#services">Media Services</a></li>
+        <li><a href="#services">Vendor Services</a></li>
+        <li><a href="#services">Corporate Services</a></li>
+        <li><a href="#services">Social Media</a></li>
+        <li><a href="#premium">AI Features</a></li>
+        <li><a href="#process">How It Works</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Contact Us</h4>
+      <div class="fctacts">
+        <div class="fci"><div class="fcic"><i class="fab fa-whatsapp"></i></div><div class="fcii"><strong>WhatsApp</strong><a href="https://wa.me/917093528048" target="_blank" style="color:var(--wa);">+91 70935 28048</a></div></div>
+        <div class="fci"><div class="fcic"><i class="fas fa-envelope"></i></div><div class="fcii"><strong>Email</strong><a href="mailto:nexacreation@gmail.com">nexacreation@gmail.com</a></div></div>
+        <div class="fci"><div class="fcic"><i class="fab fa-instagram"></i></div><div class="fcii"><strong>Instagram</strong><a href="https://instagram.com/nexacreation" target="_blank">@nexacreation</a></div></div>
+        <div class="fci"><div class="fcic"><i class="fas fa-map-marker-alt"></i></div><div class="fcii"><strong>Address</strong><span>Hyderabad, Telangana — 500001</span></div></div>
+        <div class="fci"><div class="fcic"><i class="fas fa-clock"></i></div><div class="fcii"><strong>Working Hours</strong><span>Mon–Sat: 9:00 AM – 8:00 PM</span></div></div>
+        <div class="fci"><div class="fcic"><i class="fas fa-phone"></i></div><div class="fcii"><strong>Phone</strong><a href="tel:+917093528048">+91 70935 28048</a></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="fbot">
+    <div class="fcopy">© 2025 <em>Nexa Creation</em>. All rights reserved. Crafted with ❤️ in Hyderabad.</div>
+    <div class="ftag">Where Creativity Meets Technology ✦</div>
+  </div>
+</footer>
+
+<!-- ════════════════════ WA FLOAT ════════════════════ -->
+<div class="wa-fl">
+  <div class="wa-tip"><strong>Chat with us — fast reply!</strong>+91 70935 28048</div>
+  <a href="https://wa.me/917093528048" target="_blank" class="wa-b" title="WhatsApp Nexa Creation">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<script>
+// ── LOADER ──
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('out'),2500);});
+
+// ── PARTICLES ──
+(function(){
+  const wrap=document.getElementById('particles');
+  const cols=['rgba(212,168,83,','rgba(212,75,158,','rgba(79,142,247,','rgba(62,207,178,','rgba(240,112,56,'];
+  for(let i=0;i<40;i++){
+    const el=document.createElement('div');el.className='pt';
+    const s=Math.random()*5+1.5;
+    const c=cols[Math.floor(Math.random()*cols.length)];
+    el.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${c}${(Math.random()*.35+.08).toFixed(2)});animation-duration:${Math.random()*22+14}s;animation-delay:${Math.random()*-25}s;`;
+    wrap.appendChild(el);
+  }
+})();
+
+// ── CURSOR ──
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=(mx-4)+'px';cur.style.top=(my-4)+'px';});
+(function tick(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=(rx-17)+'px';ring.style.top=(ry-17)+'px';requestAnimationFrame(tick);})();
+document.querySelectorAll('a,button,.scard,.tc,.pc-card,.wsm,.gc').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.cssText+='width:20px;height:20px;background:rgba(212,168,83,.35);';ring.style.transform='scale(1.7)';ring.style.borderColor='rgba(212,168,83,.85)';});
+  el.addEventListener('mouseleave',()=>{cur.style.cssText+='width:8px;height:8px;background:var(--gold);';ring.style.transform='scale(1)';ring.style.borderColor='rgba(212,168,83,.55)';});
+});
+
+// ── SCROLL PROGRESS + NAV ──
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-innerHeight))*100;
+  document.getElementById('sprog').style.width=pct+'%';
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>65);
+},{ passive:true });
+
+// ── REVEAL ──
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*55);ro.unobserve(e.target);}});
+},{threshold:.08,rootMargin:'0px 0px -48px 0px'});
+document.querySelectorAll('.rev,.revl,.revr').forEach(el=>ro.observe(el));
+
+// ── COUNTERS ──
+function cnt(el,v){let c=0;const inc=v/62;const t=setInterval(()=>{c+=inc;if(c>=v){c=v;clearInterval(t);}el.textContent=Math.floor(c)+(v>=100?'+':'');},28);}
+const co=new IntersectionObserver(en=>{if(en[0].isIntersecting){document.querySelectorAll('[data-count]').forEach(el=>cnt(el,+el.dataset.count));co.disconnect();}},{threshold:.5});
+const hs=document.querySelector('.hstats');if(hs)co.observe(hs);
+
+// ── SKILL BARS ──
+const bo=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sbfill').forEach(f=>f.style.width=f.dataset.w+'%');bo.unobserve(e.target);}});},{threshold:.28});
+document.querySelectorAll('.why-hero').forEach(el=>bo.observe(el));
+
+// ── SERVICE FILTER ──
+function filt(cat,btn){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.scard').forEach(c=>{
+    const show=cat==='all'||c.dataset.cat===cat;
+    c.style.transition='opacity .4s ease,transform .4s ease';
+    c.style.opacity=show?'1':'.12';
+    c.style.transform=show?'scale(1)':'scale(.96)';
+  });
+}
+
+// ── MOBILE MENU ──
+let mobO=false;
+function tMob(){mobO=!mobO;document.getElementById('mob').classList.toggle('open',mobO);}
+function cMob(){mobO=false;document.getElementById('mob').classList.remove('open');}
+
+// ── 3D TILT ──
+document.querySelectorAll('.scard,.pc-card,.tc,.wsm').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`translateY(-9px) rotateX(${-y*9}deg) rotateY(${x*9}deg)`;
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform='translateY(0) rotateX(0) rotateY(0)';});
+});
+</script>
+</body>
+</html>
